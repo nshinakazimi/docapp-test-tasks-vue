@@ -1,5 +1,22 @@
 // Entry point for project
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import Vue from "vue";
+import VueRouter from "vue-router";
+import routes from "./routes";
+import App from "./App.vue";
+
+Vue.use(VueRouter);
 
 export default (function () {
-  document.getElementById("app").innerHTML = "<h1>Hello from Docapp</h1>";
-}());
+  const router = new VueRouter({
+    routes,
+    mode: "history",
+  });
+
+  const app = new Vue({
+    el: "#app",
+    router,
+    render: (h) => h(App),
+  });
+})();
